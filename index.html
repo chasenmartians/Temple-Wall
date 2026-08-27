@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Temple Ordinance Wall</title>
+
+<!-- Installable app support (everything inlined so this is a single file) -->
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIlRlbXBsZSBPcmRpbmFuY2UgV2FsbCIsICJzaG9ydF9uYW1lIjogIlRlbXBsZSBXYWxsIiwgImRlc2NyaXB0aW9uIjogIkNvbG9yIGEgYnJpY2sgYWZ0ZXIgeW91ciB0ZW1wbGUgdmlzaXQgYW5kIHNoYXJlIHlvdXIgZXhwZXJpZW5jZSB3aXRoIHlvdXIgd2FyZC4iLCAic3RhcnRfdXJsIjogIi4iLCAic2NvcGUiOiAiLiIsICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLCAib3JpZW50YXRpb24iOiAicG9ydHJhaXQiLCAiYmFja2dyb3VuZF9jb2xvciI6ICIjZjRlZmUzIiwgInRoZW1lX2NvbG9yIjogIiNhYjhmNGMiLCAiaWNvbnMiOiBbeyJzcmMiOiAiZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFNQUFBQURBQ0FZQUFBQlMzR3dIQUFBRmNrbEVRVlI0bk8zY1AwNGtSeFRBWVFZWmlaQXJPUFpGbkt4RTROQVhJUE5STnJGOEFjSU5MRG14NURNNGRPd3JFQ0lSNEFBTlpvYjUwOTFUWGZXcTN2Y2xxNVZXUzZsNXY2NmFwc1htcW9HWDU2ZlhGbCtYMkc1dTd6YTF2MmFWTDJqZ1dhSkdFS3Q5QVVOUFNXdkZVUFEvTmZUVVVES0c2MUwva2VHbmxwS3pkbkZKQnArV0x0ME5MdG9CREQrdFhUcURpK294K0VTMFpEZVl2UU1ZZnFKYU1wdXpBakQ4UkRkM1JpY0hZUGpweFp4Wm5SU0E0YWMzVTJmMmJBQ0duMTVObWQyVG41b04vM3ArLyszbm5iL2ZQencyV3NuNFRqMGRFa0JsKzRPL1R3amxuUXJnNkJISThKZDNidmluL2h2bU9UWExCd013L0l6bTJFd1hleG1PMCtiYzJlMEM5WHdLd04yZlVSMmE3ZXR6L3dCR3NqL2pqa0NrSm9CSzVqemU5Q2kwbnZjQUhIL0k0dU9zMndFcW1uSm5kL2V2Ni8wblpIYUF1cndLMGRiMnA4T2JxeXZEVDA0M3QzY2JSeUJTRTBCamZ1cmJsZ0JJYmVQODM4N0h1NzhQd1czWUFVaE5BS1FtQUZJVFFDUGI4LzlQdi95eDgzZnFFZ0NwQ1lEVUJOREEvdkZuK3lmMUNTQVFud1BxRXdDcENhQVJ4NTRZQkZEWnNXT094NkZ0Q0lEVUJFQnFBcWhvLy9FbjdRa2dFSjhENmhNQXFRbWdFc2VmbUFRUWpHTlFYUUlnTlFHUW1nQXFjUDZQU3dBQitSeFFqd0JJVFFBcmMveUpUUUJCQ2FZT0FRVG5jOEM2QkVCcVF3ZlErdTQ1d3ZtLzlUVmMyOUFCOU03ajBQVU5HOEIyYUF6UGNobXU0YkFCdERiQzhTZURJUVB3ZXpjdmwrVWFEaG5BU0VZZndOYUdDK0RZcngxc01VQzlIbjhpWGNPMURSZEFCQ01PeXFnRTBJR1I3OEN0RFJYQXNTY3ZCbWk2Yk5kd3FBQWk4UGl6TDhNRWNHN3dScjJEbFpUeEdnNFR3T2hHSEw0SWhnaGc2ckZqN1NIcStmZ1Q1UnJXTmtRQXNKUUFPdExqemhKZDl3SE1QWGFNc0lXWFhudkdhN2pWZlFCUjlIeit6NnpyQUpZTzNVaDNzRXRsdjRaZEI1RFJLSU1YUmJjQlhIcmtLRGxJdlI1L0lsM0RWcm9OQUVvUUFLbDFHVUNwSTBldlczaUpkV2UvaGx0ZEJoQkpyK2QvM25RWFFPbUI2LzBPdG9ScitML3VBdUJOejBNWFNWY0JySFhjV0RwTVBSNS9vbDNEMXJvS0FFb1RBS2wxRThEYXg0MmxXM2pMNDgvY05VZTloaTExRTBBMFBYMlRPYTZMQUdwOTJPenhEamFWYTNoWUZ3RndYRTlQb0NJS0gwRHRSNDFUN21BUkgzOUdXbTlQdTBENEFHQk5BaUMxMEFHME9tcWMyc0lqSG44aXJyZVhZMURvQUdCdFlRTm9mYWZ0NVE1MmltdDRYdGdBb0liTnkvUFRhK3RGN0l0NHg3aC9lQXk1cmtPaXJ2WCs0YkgxRWo0SkUwREVieGpyaVJLREl4Q3BmZGQ2QWZzaVBWNmt2RzlmdjdSZXdnNDdBS2tKZ05RRVFHb0NJRFVCa0pvQVNFMEFwQ1lBVWhNQXFRbUExQVJBYXVIZUJmcjNuejliTDRGRXdnWHcvUTgvdGw0Q0svcjdyMTliTDJHSEl4Q3BDWURVQkVCcUFpQTFBWkNhQUVoTkFLUW1BRklUQUtrSmdOUUVRR3JoM2dYeU1odzFoUXZBeTNCajh6SWNCQ0lBVWhNQXFRbUExQVJBYWdJZ05RR1FtZ0JJVFFDa0pnQlNFd0NwQ1lEVXdyME01MjFRYWdvWGdMZEJ4K1p0VUFoRUFLUW1BRklUQUtrSmdOUUVRR29DSURVQmtKb0FTRTBBcEJidVZZaHZYNyswWGdLSjJBRkliZlB5L1BUYWVoSFFpaDJBMUFSQWFnSWdOUUdRbWdCSVRRQ2tKZ0JTRXdDcFhkL2MzbTFhTHdKYXVMbTkyOWdCU0UwQXBDWUFVcnUrdW5vN0M3VmVDTlMwblhrN0FLa0pnTlRlQTNBTUlvdVBzMjRISURVQmtOcE9BSTVCakc1L3hqL3RBQ0pnVklkbTJ4R0kxQTRHWUJkZ05NZG0rdWdPSUFKR2NXcVdIWUZJN1dRQWRnRjZkMjZHeis0QUlxQlhVMlozMGhGSUJQUm02c3hPL2d3Z0Fub3haMVpuZlFnV0FkSE5uZEhaVDRGRVFGUkxadk9pWWZhcjFZbmdrcHZ5UlQ4SHNCdlEycVV6V0d5QTdRYlVWT3JtVyt3bndYWURhaWs1YTZzTnJSMkJrdGE2d1ZhNWE0dUJKV3FjS3BvY1d3VEJJUzJPMGY4Qnp4SW1DbkN2bUtVQUFBQUFTVVZPUks1Q1lJST0iLCAic2l6ZXMiOiAiMTkyeDE5MiIsICJ0eXBlIjogImltYWdlL3BuZyIsICJwdXJwb3NlIjogImFueSBtYXNrYWJsZSJ9LCB7InNyYyI6ICJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQWdBQUFBSUFDQVlBQUFEMGVOVDZBQUFTVkVsRVFWUjRuTzNkTzg0a1JkcUc0V3JVU0pqc2hUVmd0b1NCT1J0QU9DeWxIY1FHTU50QXdrRmlEWmpZYkFFVENZTXhQaFhVVjEySFBFVEc2Ymt1ajVsZjgyZGxWY1Y3UjJSMTgrWkVNWC8vOWVjL3JhOEJZR2FmZnZiNW05YlhNQXMzY2lWREhxQlA0bUFkTitzQnd4NWdiS0xnUGpmbWdvRVBNRGRCOEovNEcySG9BMlJLajRISUYyL29BM0FwTVFhaVhyREJEOEFqU1NFdy9RczE5QUhZWXZZWW1QYkZHZndBbERCckNFejNvZ3grQUk0d1d3aE04MklNZmdCcW1DVUVobjhSQmo4QUxZd2VBc05ldk1FUFFBOUdEWUZQV2wvQUZvWS9BTDBZZFNZTlZTMmozbVFBTW94MEdqREVoUnI4QUl4a2hCRG8vaEdBNFEvQWFFYVlYVjBId0FnM0VBQnU2WDJHZFhsRTBmdE5BNEExZW53azBOMEpnT0VQd0d4Nm5HMWRCVUNQTndnQVN1aHR4blZ4Sk5IYlRRR0FJL1h3U0tENUNZRGhEMENhSG1aZjB3RG80UVlBUUF1dFoyQ3pBR2o5d2dHZ3RaYXpzRWtBR1A0QThLTFZUS3dlQUlZL0FMeldZalpXRFFEREh3QnVxejBqcXdXQTRROEFqOVdjbFZVQ3dQQUhnR1ZxemN6REE4RHdCNEIxYXN6T1F3UEE4QWVBYlk2ZW9ZY0ZnT0VQQVBzY09Vc1BDUURESHdES09HcW1OdjkzQVFBQTlSVVBBTHQvQUNqcmlObGE5RjlIYVBoRDMzNzY0WDhQLy91dnZ2bXgwcFVBVzVUODF3Z1greDh5L0tGZnp3Yi9OU0VBL1NvVkFRSUFKcloyOEY4VEF0Q2ZVZ0ZRNURjQWhqLzBaKy93TC9XL0FaUlZhdWJ1RGdEREgvcFRjbkNMQU9oUGlkbTdLd0FNZitqUEVRTmJCRUIvOXM1Z2Z3OEFUT1RJUVMwQ1lDNmJBOER1SC9wU1kwQ0xBT2pMbmxuc0JBQUFBbTBLQUx0LzZFdk5uYmxUQU9qTDFwbThPZ0FNZndEb3k1Ylo3QkVBREs3Rmp0d3BBSXh2VlFEWS9RTkFuOWJPYUNjQUFCQm9jUURZL1FOQTM5Yk1haWNBQUJCb1VRRFkvUVBBR0piT2JDY0FBQkRvYVFEWS9RUEFXSmJNYmljQU1MaXZ2dmt4NHY4blVOYkRBTEQ3QjRBeFBadmhUZ0JnQWpWMzVIYi9NQWNCQUFDQjdnYUE0MzhZUzQyZHVkMC9qT1hSTEhjQ0FCTTVja0FiL2pDWG13Rmc5dy9qT21KUUcvNHdybnN6M1FrQVRLamt3RGI4WVU0Q0FDWlZZbkFiL2pDdk45Zi9nZU4vbU05UFAveHYxZis5d1EveitmU3p6MS9OZkFFQVFaNkZnTUVQOHhJQUFCRG9PZ0JlL1FiQThBZUFPVjNQZUQ4Q0JJQkFBZ0FBQWdrQUFBajBid0I0L2c4QWM3dWM5VTRBQUNDUUFBQ0FRQUlBUXEzOTJ3R0J1UWdBQUFqMHllbmtCNENRNXJ6N2R3b0FlYzR6M3drQUFBUVNBQUFRU0FBQVFDQUJBR0d1bi92N0hRQmtFZ0FBRUVnQUFFQ2dOLzRJSU9SNGROei8xVGMvVnJ3U29EVW5BQUFRU0FBQVFDQUJBQUNCQkFDRWVQYkgvZnh4UU1naUFBQWdrQUFBZ0VBQ0FBSXNQZDczR0FCeUNBQUFDQ1FBQUNDUUFBQmU4UmdBTWdnQW1KeUJEdHdpQUNEVTE5LzkzUG9TZ0lZRUFBQUVFZ0F3c2EzSC94NGJ3UHdFQUFRNkgvOTdEQUM1QkFBQUJCSUF3RTBlQThEY0JBQk1hdWtBOXhnQU1na0FDR1BnQTZlVEFBQ0FTQUlBSmxUcStiM2ZBY0M4QkFBRXVYZjg3N0VBNUJFQUFCQklBQUFQZVF3QWN4SUFNSm10QTl0akFNZ2lBQ0NFQVE5Y0VnQUFFRWdBd0VUMlBxKy9kMHJnZHdBd0h3RUFBUnovQTljRUFBQUVFZ0RBSWg0RHdGd0VBRXlpMUlEMnVBQXlDQUNZbklFTzNDSUFnTVU4Qm9CNUNBQ1lRT25CN05RQTVpY0FZR0lHT1hDUEFBQ0FRQUlBV01YdkFHQU9BZ0FHZDlSQTl2Z0E1aVlBWUZJR09QQ0lBQUJXOHhnQXhpY0FZR0JIRDJLbkNEQXZBUUFUTXJpQlp3UUFBQVFTQU1BbWZnY0FZeE1BTUtoYUE5ampCSmlUQUlESkdOakFFZ0lBMk14akFCaVhBSUFCMVI2OFRoVmdQZ0lBSm1KUUEwc0pBQUFJSkFDQVJlNmRMdmdkQUl4SkFNQmdERnlnQkFFQWsvRDhIMWhEQUFDN09aV0E4UWdBR0VqclFldVVBZVloQUdBQ0JqT3dsZ0FBaW1oOU9nR3NJd0NBVlp3MndCd0VBQXpDRGhzb1NRREE0T3pJZ1MwRUFGQ01Vd29ZaHdDQUFmUTJXSjA2d1BnRUFBek1JQWEyRWdCQVViMmRWZ0MzQ1FCZ0U2Y1BNRFlCQUoyem93YU9JQUJnVUhiZ3dCNENBQ2pPcVFYMFR3QlFqRVcvdk43dnFWT0l1bnIvUERBV0FRQURNbmlCdlFRQVJaeDNKbllvblBrc2xPVTdSbWtDQU5qRmFRU01TUUN3Mi9XT3hBNmxEUGVSTTk4eGppQUFZREIyM0VBSkFvQmQ3dTFFN0ZDeTNJc1NuNFA5Zk1jNGlnQ0FEbG5jZ2FNSkFBNWppSlhuK0QrTDd4QkhFZ0JzWm5GaUNaK1Q0N2kzN0NFQWdDS2NUc0JZQkFDYkxOMTUyS0dzNTU1eE92bU9jVHdCQUlNWWVZZHRTRUYvQkFDcnJWM01MZjQ1Um82VW52aU9VWU1BZ0k1WXlJRmFCQUNyUEJwUWozWi9CdHMrZHRZNWZNZW9SUUFBVlJoUTBCY0JRQkhubllrZENrNHJ0bHV5KzNkL0tVVUFzSmdCZnF4Nzk5ZUN6MUsrbzZ3aEFDak93T0llQTJvYjN5bU9JQUJZWk9zUGs5Yjg3ekFQQTJ1OU5kOE5qOW9vUVFCQUJ5emFRRzBDZ0tlMjdQN3RVTXF3azg3Z08wWUxBZ0NveW5DQ1BnZ0FObnUyTzdWRFdXYldlK0gwWXBrOXY2OXhqOWxEQVBEUXJNTnBCQlozOXZEZDVSa0J3S0djQW5DTDkvNUZxVDlkQTFzSUFPNnlPTEdYejhueFJEWmJDUUFPWndqY1o0SG1GdDhaYWhBQTNGUnI5MjhBM21ZQXpLL2taOThwQUZzSUFPQlE5NGFUd1FSdENRQlcyYm96dFVQNVdPcnI1cGdUTnFkR3JDVUErSWpCMUphRm5OSjhwN2xGQUZDTlV3Q3VKYjd2L25RTnZSQUF2R0p4NGdnK08zV0liTllRQUZSbEVMeXdHSFBOZDRQYUJBRC9hcjM3TnhRemgwRFMrMTdqdFRvRllDa0JBRlNSR0RmUU13SEFVNlVYN3ZRZFNzSnI1R00xVDlqRUZrc0lBRTZuazZIVUE0czJOZml1Y3lZQWFDTDlGSURYWm4vUFcvKytCbTRSQUZpY3FNYm5xUjZSelRNQ2dHWVNGNmhaWHhmM0NXeDZKUURDV1p6NjRGNkxveU1rUmpiTENRQ2FNdmp5ZU05ZnVBKzBKZ0NDOWI3N24yMkhNdHZyNGJrZTNuT25BTndqQUtDeEhtSUx5Q01BK0VqdGdXU0h3dGxNNzNkUEoyd2lrMXNFUUtpWkZsckdZeUQxdzFxUVN3RFFoZGxQQVdaNERTelgwKzRmN2hFQWdTeE8vWEMvUHlhV2pqRjdaTE9lQUtBYkZxZ3NzOGFQd0dZVUFpQ014YWsrOFVJdlJEYVhCQUJkU1lxUXBOZUs5NXYrQ0FCT3A5TVlpNU1keW56dWZlNUdmYTlIdU80UnZ1dlVJUUNDakxBNEFlMVlJN0lJQUxvejAzUEswYTZYN2Z5K2h0RUlnQkFXcDc2NDU4K0pwK1BNRk5sc0p3RG9rZ1VxeHd3eEpMQVprUUFJWUhGcVE2alFNNUdOQUtCYnN5NVFvbXU1RWQ1bmdjMm9CRUF3aXhPOThGbHN3MzNQSmdBbU44SU82aEVMRktNYS9iTTcrdHJCY3dLQVlmVzhRUFY4YlpUamZXWmtBbUJpbmszMngzMWZ6NUE5MXF5L3RlRTVBVUQzTEZBWlJvc2pnYzNvQk1Da0xFN3RpQkpHSTdJekNRQ0dNTU1DSmJ5MjYrMDlGdGpNUUFDRXNUalJNNS9QZHR6N1BBSmdRcjN0bGtxWjRSU0E4U1h1L24yLzVpUUFvQ0FMSlRBS0FUQ1oyWGNubzc2R1VhKzdKNzNIMVF6dnNWTzJMQUtBYVZpZzV0RHpJUFVaWXlZQ1lDS3o3LzU3Wnpnd0E2Y0FPUVFBd3hsdGdSSmY1YlI4ZndVMnN4RUFrN0E0TVJPZjJiWkdpMnkyRVFBTXlRSkZUUUtiR1FtQXlWbWM2aEFkek1iYU1UOEJNSUhVNFRQQ0tZQkZkTHQ3OTY3MmUydjMvN0Zldmwvc0l3QUFJSkFBR0Z6NjdxU0gxMmczbEttSHo5N1JSamhsWXpzQndMUmFMMUFKQTZLVld1OXQ2ODhRSEVrQURDeDk5OC84Zkk3YmN3b3dMd0hBOEN4UUhFRmdNenNCTUNHTFV6MENveDMzdmg1cnlwd0V3S0FzZnEvMWRncGd3U3lueGIyMCsxL09XalF1QVFBQWdRVEFnT3hPYnF2OTJ1MTg4dmgrM2VhN01DWUJRSVNhQzFUeWtLanRpUGZWTUNPRkFCaU0zVCtKZkxiNzRCUmdMZ0tBcVZpZzJFTmdrMFFBVE1MaVZKZVk2SWYzb2k1cnpUd0V3RUFzZE11MFBBV3dPQjduNkh0cjk3K2ZOV29zQWdBQUFnbUFRZGlkckhQa0tZQmR6bng4djlieFc1czVDQUFveEtCb3g5Q0I5UVRBQU94T3RuRnY1bFA3UGZVWnVzOHB3UGdFQUpFc1VKejVMSkJLQUF6TTdxUSt3NkpmM3B2NnJFRmpFd0NkczZqdFUrdVkwa0pZVDhsNzdmSGFjYXhkL1JNQUFCQklBSFRNN3FTTVVxY0FkalJ6OGYwcXc0OEJ4eVVBWUNmRG9yNTc5OXpBZ2VVRVFLZnNUc3F5UytHUzcxZFp2bDlqRWdBQUVFZ0FkTWp1NUJoNzdwMWR6RGoydkZlK1g5czVCUmlQQUlEVDlnWEt3R2huNjcwM2pPQ0ZBQmlJWVFQMHpCbzFsamQvLy9YblA2MHZndi9ZbmJUMTFUYy9mdlNmZVUvRzVMM3N6NjMzaEhhY0FBQkFJQUhRRWJ1VDlyd0g4L0xldHVjOTZJc0FBSUJBQXFBVHlyZ2ZsKytGOTJWYzNzYytlUy82NFVlQWxmbndBOXptUjRKMU9RRUFnRUFDQUFBQ0NRQUFDQ1FBQUNDUUFBQ0FRRzliWHdBdi9CM2FRSW9QNzkrMXZnUk9UZ0FBSUpJQUFJQkFBZ0FBQWdrQUFBZ2tBQUFna0FBQWdFQUNBQUFDQ1FBQUNDUUFBQ0NRQUFDQVFBSUFBQUlKQUFBSUpBQUFJSkFBQUlCQUFnQUFBZ2tBQUFna0FBQWdrQUFBZ0VBQ0FBQUNDUUFBQ0NRQUFDQ1FBQUNBUUFJQUFBSUpBQUFJSkFBQUlKQUFBSUJBQWdBQUFna0FBQWdrQUFBZzBOdldGNURxaXkrL2ZmWFBmL3orUzZNckFhanJldjM3N2RmdkcxMUpOaWNBQUJESUNVQWoxOFg3OVhjL043b1NnTG8rdkgvWCtoSTRPUUVBZ0VnQ0FBQUNDUUFBQ0NRQUFDQ1FBQUNBUUFJQUFBSUpBQUFJSkFBQUlKQUFBSUJBQWdBQUFna0FBQWdrQUFBZ2tBQUFnRUFDQUFBQ0NRQUFDQ1FBQUNDUUFBQ0FRQUlBQUFJSkFBQUlKQUFBSUpBQUFJQkFBZ0FBQWdrQUFBZ2tBQUFna0FBQWdFQUNBQUFDQ1FBQUNDUUFBQ0NRQUFDQVFBSUFBQUlKQUFBSUpBQUFJTkRiMWhlUTZvc3Z2MzMxejMvOC9rdWpLd0dvNjNyOSsrM1g3eHRkU1RZbkFBQVF5QWxBSTlmRisvVjNQemU2RW9DNlByeC8xL29TT0RrQkFJQklBZ0FBQWdrQUFBZ2tBQUFna0FBQWdFQUNBQUFDQ1FBQUNDUUFBQ0NRQUFDQVFBSUFBQUlKQUFBSUpBQUFJSkFBQUlCQUFnQUFBZ2tBQUFna0FBQWdrQUFBZ0VBQ0FBQUNDUUFBQ0NRQUFDQ1FBQUNBUUFJQUFBSUpBQUFJSkFBQUlKQUFBSUJBQWdBQUFna0FBQWdrQUFBZ2tBQUFnRUFDQUFBQ0NRQUFDQ1FBQUNDUUFBQ0FRRzliWDBDcUw3Nzg5dFUvLy9IN0w0MnVCS0N1Ni9YdnQxKy9iM1FsMlp3QUFFQWdKd0NOWEJmdjE5LzkzT2hLQU9yNjhQNWQ2MHZnNUFRQUFDSUpBQUFJSkFBQUlKQUFBSUJBQWdBQUFna0FBQWdrQUFBZ2tBQUFnRUFDQUFBQ0NRQUFDQ1FBQUNDUUFBQ0FRQUlBQUFJSkFBQUlKQUFBSUpBQUFJQkFBZ0FBQWdrQUFBZ2tBQUFna0FBQWdFQUNBQUFDQ1FBQUNDUUFBQ0NRQUFDQVFBSUFBQUlKQUFBSUpBQUFJSkFBQUlCQWIxdGZBQzgrdkgvWCtoSUFDT0lFQUFBQ0NRQUFDQ1FBQUNDUUFBQ0FRQUlBQUFLOStmdXZQLzlwZlJFQVFGMU9BQUFna0FBQWdFQUNBQUFDQ1FBQUNDUUFBQ0NRQUFDQVFBSUFBQUlKQUFBSUpBQUFJSkFBQUlCQUFnQUFBZ2tBQUFna0FBQWdrQUFBZ0VBQ0FBQUNDUUFBQ0NRQUFDQ1FBQUNBUUo5OCt0bm5iMXBmQkFCUXo2ZWZmZjdHQ1FBQUJCSUFBQkJJQUFCQUlBRUFBSUVFQUFBRUVnQUFFT2lUMCtubGp3TzB2aEFBNEhqbm1lOEVBQUFDQ1FBQUNDUUFBQ0NRQUFDQVFQOEdnQjhDQXNEY0xtZTlFd0FBQ0NRQUFDQ1FBQUNBUUs4Q3dPOEFBR0JPMXpQZUNRQUFCQklBQUJEb293RHdHQUFBNW5KcnRqc0JBSUJBQWdBQUF0ME1BSThCQUdBTzkyYTZFd0FBQ0hRM0FKd0NBTURZSHMxeUp3QUFFRWdBQUVDZ2h3SGdNUUFBak9uWkRIY0NBQUNCbmdhQVV3QUFHTXVTMmUwRUFBQUNMUW9BcHdBQU1JYWxNOXNKQUFBRVdod0FUZ0VBb0c5clpyVVRBQUFJdENvQW5BSUFRSi9Xem1nbkFBQVFhSFVBT0FVQWdMNXNtYzJiVGdCRUFBRDBZZXRNOWdnQUFBSnREZ0NuQUFEUTFwNVo3QVFBQUFMdENnQ25BQURReHQ0WnZQc0VRQVFBUUYwbFptK1JSd0FpQUFEcUtEVnovUVlBQUFJVkN3Q25BQUJ3ckpLenR1Z0pnQWdBZ0dPVW5ySEZId0dJQUFBbzY0alo2amNBQUJEb2tBQndDZ0FBWlJ3MVV3ODdBUkFCQUxEUGtiUDAwRWNBSWdBQXRqbDZoaDcrR3dBUkFBRHIxSmlkVlg0RUtBSUFZSmxhTTdQYW53SVFBUUR3V00xWldmV1BBWW9BQUxpdDlveXMvdmNBaUFBQWVLM0ZiR3p5RndHSkFBQjQwV29tTnZ1YkFFVUFBT2xhenNLbWZ4V3dDQUFnVmVzWjJQemZCZEQ2QmdCQWJUM012dVlYY09udnYvNzhwL1UxQU1CUmVoajhaODFQQUM3MWRHTUFvS1RlWmx4WEFYQTY5WGVEQUdDdkhtZGJkeGQweVNNQkFFYlc0K0EvNis0RTRGTFBOdzRBSHVsOWhuVWRBS2RUL3pjUUFLNk5NTHU2djhCTEhna0EwTE1SQnYvWk1CZDZTUWdBMEpPUkJ2OVo5NDhBYmhueFJnTXdwMUZuMHBBWGZjbHBBQUF0akRyNHo0YSsrRXRDQUlBYVJoLzhaMU84aUV0Q0FJQWp6REw0ejZaNk1aZUVBQUFsekRiNHo2WjhVWmVFQUFCYnpEcjR6NlorY2RmRUFBQ1B6RDcwTDhXODBFdENBSUJMU1lQL0xPNEZYeE1EQUprU2gvNmw2QmQvVFF3QXpDMTk2Rjl5SXg0UUJBQmpNL0R2YzJOV0VnVUFmVExzMTNHekNoSUhBTWN5NU12NVAyU2FtdlMwSjEvcUFBQUFBRWxGVGtTdVFtQ0MiLCAic2l6ZXMiOiAiNTEyeDUxMiIsICJ0eXBlIjogImltYWdlL3BuZyIsICJwdXJwb3NlIjogImFueSBtYXNrYWJsZSJ9XX0=">
+<meta name="theme-color" content="#ab8f4c">
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- iOS home screen support -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Temple Wall">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAFEUlEQVR4nO3cP24TXRSG8TsWllx6C9RshCZSCko2QMdS0iA2kDIFEg0Sa6CkZgsuLaUwReTIdsb2XN8/55x3nl+HPr74yvPM4cS2PKSOnrebXc/Hgw/L1Xro9VhNH4iAMaZl4NV/MBEjR+24q/0wQkaJWmEX/xBCRk2lYS9K/mdiRm2lTd10NxAyerhlWmdPaGJGL7e0lhU0MaO33OYmB03MsJLT3qSgiRnWpjZ4NWhihhdTWrz4WyQxl/vx/fPRn++/PBqdRMelVz/O/gdiLnMa8inCLnMu6qI3VjDuWsxT/w7yjQbNdIZ35xp9EzQxl8mZvEzpMmOtsnJAylHQTGdEc9osExpSXoNmOteR83IcL93VcdguExpSCLqBKZOX6dzGkBLrRku89d3PcrUeCBoylqv1wMoBKQTdCe8K9rFg3YCK5+1mx4TuYD+dmdLtETSkEDSkEDSkEHRj+73509efR39GGwQNKQQNKQTd0Om6wdrRHkFDCkFDCkE3crpuoA+C7ow9ui2ChhSChhSCbuDa/sza0Q5BQwpBQwpBV8bLdbYI2gh7dBsEDSkEXRHrhj2CNsTaUR9BQwpBQwpBV8L+7ANBG2OPrksqaKLIp/acSQVthXXDD5mgI39/nNXaEfk5O0cmaCAlkaAtv50o6rqh+o1OEkEDe+GDVvkyl57nVnnOxoQPGjgkGXSviRNxf4545hyhg1a/OD2prB2hg74k4gVqfeY5DICwQVtfHOvHbyHiEDgVNugpFC5QLYo34JiQQStfHOub0PrxS4UM2pryDRVduKBzY4o+cWqY03MWLmjgklkEHW3i1Dzv3NajUEF7uDgeztBDtCGwFyroElEvUIm53HyHwgQ9t4vj4Qb0cIZcYYKuofQCRbqpIp21phBBz/XieBBtSocIuqZoF+gWcx4Aswv6VhaRzOHmq8190C1CUg5l7s+X+6CBHK6DnvMuuOdlOno5xzWug24p5wJFubGinLMlt0FzcfyJMKXdBt1DhAs0FQPghcugPV0cD2fxdON5OssYl0H35P0CTeHhpvNi9kFDi7ugPb0j52nyeTqj53/V3AUNlHAVtOVE9Dx1zuH5estV0ECp4Xm72VkfIiV/dzry3H95tD5CSslB0ISsxTpsVg5IeWd9gD0PL43hdk8Pd9ZHSCkxoSGGoCGFoCGFoCGFoCGFoCGFoCGFoCGFoCGFoCHFzVvf//7+sj4CBLgJ+v2Hj9ZHQIE/v79ZHyGlxMoBMQQNKQQNKQQNKQQNKQQNKQQNKQQNKQQNKQQNKW7e+uazHKjBTdB8liM2PssBNEDQkELQkELQkELQkELQkELQkELQkELQkELQkELQkOLmsxx8OAk1uAmaDyfFxoeTgAYIGlIIGlIIGlIIGlIIGlIIGlIIGlIIGlIIGlLcvPX99HBnfQQIYEJDyvC83eysDwHUwoSGFIKGFIKGFIKGFIKGFIKGFIKGlMVytR6sDwHUsFytByY0pBA0pBA0pCxSetk9rA8ClNg3zISGFIKGlNegWTsQ1WG7TGhIOQqaKY1oTptlQkPKm6CZ0ohirNXRCU3U8O5co6wckHI2aKY0vLrU5sUJTdTw5lqTV1cOooYXU1qctEMTNaxNbXDyL4VEDSs57WW9ykHU6C23ueyX7YgavdzSWlGcfNEjWigZmkVvrDCtUVtpU9WCZFqjRK3hWH3CEjZy1P5XvunKQNwY03JV7boDE/g89fxd6z/HdQfvnVlqxQAAAABJRU5ErkJggg==">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAFcklEQVR4nO3cP04kRxTAYQYZiZArOPZFnKxE4NAXIPNRNrF8AcINLDmx5DM4dOwrECIR4AANZob5091TXfWq3vclq5VWS6l5v66apsXmqoGX56fXFl+X2G5u7za1v2aVL2jgWaJGEKt9AUNPSWvFUPQ/NfTUUDKG61L/keGnlpKzdnFJBp+WLt0NLtoBDD+tXTqDi+ox+ES0ZDeYvQMYfqJaMpuzAjD8RDd3RicHYPjpxZxZnRSA4ac3U2f2bACGn15Nmd2Tn5oN/3p+/+3nnb/fPzw2Wsn4Tj0dEkBl+4O/TwjlnQrg6BHI8Jd3bvin/hvmOTXLBwMw/Izm2EwXexmO0+bc2e0C9XwKwN2fUR2a7etz/wBGsj/jjkCkJoBK5jze9Ci0nvcAHH/I4uOs2wEqmnJnd/ev6/0nZHaAurwK0db2p8ObqyvDT043t3cbRyBSE0BjfurblgBIbeP8387Hu78PwW3YAUhNAKQmAFITQCPb8/9Pv/yx83fqEgCpCYDUBNDA/vFn+yf1CSAQnwPqEwCpCaARx54YBFDZsWOOx6FtCIDUBEBqAqho//En7QkgEJ8D6hMAqQmgEsefmAQQjGNQXQIgNQGQmgAqcP6PSwAB+RxQjwBITQArc/yJTQBBCaYOAQTnc8C6BEBqQwfQ+u45wvm/9TVc29AB9M7j0PUNG8B2aAzPchmu4bABtDbC8SeDIQPwezcvl+UaDhnASEYfwNaGC+DYrx1sMUC9Hn8iXcO1DRdABCMOyqgE0IGR78CtDRXAsScvBmi6bNdwqAAi8PizL8MEcG7wRr2DlZTxGg4TwOhGHL4Ihghg6rFj7SHq+fgT5RrWNkQAsJQAOtLjzhJd9wHMPXaMsIWXXnvGa7jVfQBR9Hz+z6zrAJYO3Uh3sEtlv4ZdB5DRKIMXRbcBXHrkKDlIvR5/Il3DVroNAEoQAKl1GUCpI0evW3iJdWe/hltdBhBJr+d/3nQXQOmB6/0OtoRr+L/uAuBNz0MXSVcBrHXcWDpMPR5/ol3D1roKAEoTAKl1E8Dax42lW3jL48/cNUe9hi11E0A0PX2TOa6LAGp92OzxDjaVa3hYFwFwXE9PoCIKH0DtR41T7mARH39GWm9Pu0D4AGBNAiC10AG0Omqc2sIjHn8irreXY1DoAGBtYQNofaft5Q52imt4XtgAoIbNy/PTa+tF7It4x7h/eAy5rkOirvX+4bH1Ej4JE0DEbxjriRKDIxCpfdd6AfsiPV6kvG9fv7Rewg47AKkJgNQEQGoCIDUBkJoASE0ApCYAUhMAqQmA1ARAauHeBfr3nz9bL4FEwgXw/Q8/tl4CK/r7r19bL2GHIxCpCYDUBEBqAiA1AZCaAEhNAKQmAFITAKkJgNQEQGrh3gXyMhw1hQvAy3Bj8zIcBCIAUhMAqQmA1ARAagIgNQGQmgBITQCkJgBSEwCpCYDUwr0M521QagoXgLdBx+ZtUAhEAKQmAFITAKkJgNQEQGoCIDUBkJoASE0ApBbuVYhvX7+0XgKJ2AFIbfPy/PTaehHQih2A1ARAagIgNQGQmgBITQCkJgBSEwCpXd/c3m1aLwJauLm929gBSE0ApCYAUru+uno7C7VeCNS0nXk7AKkJgNTeA3AMIouPs24HIDUBkNpOAI5BjG5/xj/tACJgVIdm2xGI1A4GYBdgNMdm+ugOIAJGcWqWHYFI7WQAdgF6d26Gz+4AIqBXU2Z30hFIBPRm6sxO/gwgAnoxZ1ZnfQgWAdHNndHZT4FEQFRLZvOiYfar1YngkpvyRT8HsBvQ2qUzWGyA7QbUVOrmW+wnwXYDaik5a6sNrR2Bkta6wVa5a4uBJWqcKpocWwTBIS2O0f8BzxImCnCvmKUAAAAASUVORK5CYII=">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f4efe3;
+    --panel: #fbf8f0;
+    --ink: #332f28;
+    --ink-soft: #6b6558;
+    --stone-line: #d6cdb4;
+    --brick-empty: #ffffff;
+    --brick-outline: #ded4b7;
+    --gold: #ab8f4c;
+    --blue: #3e6fa6;
+    --yellow: #cf9a2f;
+    --green: #587f52;
+    --red: #a84a3f;
+    --shadow: 0 10px 30px rgba(50,40,10,0.12);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    min-height:100vh;
+    background:
+      radial-gradient(ellipse at top, #faf6ea 0%, var(--bg) 60%);
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    display:flex;
+    justify-content:center;
+    padding:28px 14px 60px;
+  }
+  .wrap{width:100%; max-width:560px;}
+  header{ text-align:center; margin-bottom:18px; }
+  .eyebrow{
+    font-size:11px; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--gold); font-weight:600; margin-bottom:6px;
+  }
+  h1{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-size:clamp(30px,7vw,42px);
+    margin:0 0 6px;
+    letter-spacing:0.01em;
+  }
+  .sub{ color:var(--ink-soft); font-size:14.5px; line-height:1.5; max-width:420px; margin:0 auto; }
+
+  .legend{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:8px 16px;
+    background:var(--panel);
+    border:1px solid var(--stone-line);
+    border-radius:12px;
+    padding:14px 16px;
+    margin:20px 0 22px;
+    box-shadow:var(--shadow);
+  }
+  .legend-item{ display:flex; align-items:center; gap:8px; font-size:13.5px; }
+  .swatch{ width:14px; height:14px; border-radius:3px; flex-shrink:0; }
+
+  .temple-card{
+    background:var(--panel);
+    border-radius:16px;
+    box-shadow:var(--shadow);
+    padding:18px 12px 14px;
+    border:1px solid var(--stone-line);
+  }
+  .temple-card svg{ width:100%; height:auto; display:block; }
+  .brick{ stroke:var(--brick-outline); stroke-width:1.4; cursor:pointer; transition:filter .12s ease, stroke .12s ease; }
+  .brick:hover{ filter:brightness(0.94); stroke:var(--ink-soft); }
+  .brick-empty{ fill:var(--brick-empty); }
+  .brick-baptisms{ fill:var(--blue); }
+  .brick-initiatory{ fill:var(--yellow); }
+  .brick-endowment{ fill:var(--green); }
+  .brick-sealing{ fill:var(--red); }
+
+  .progress-row{
+    display:flex; align-items:center; gap:10px;
+    margin-top:14px; padding:0 4px;
+  }
+  .progress-track{
+    flex:1; height:6px; background:var(--stone-line); border-radius:4px; overflow:hidden;
+  }
+  .progress-fill{ height:100%; background:var(--gold); border-radius:4px; transition:width .4s ease; }
+  .progress-label{ font-size:12px; color:var(--ink-soft); white-space:nowrap; }
+
+  .footnote{ text-align:center; font-size:12px; color:var(--ink-soft); margin-top:16px; line-height:1.6;}
+
+  /* Modal */
+  .overlay{
+    position:fixed; inset:0; background:rgba(40,32,14,0.45);
+    display:flex; align-items:center; justify-content:center;
+    padding:20px; z-index:50; opacity:0; pointer-events:none; transition:opacity .18s ease;
+  }
+  .overlay.show{ opacity:1; pointer-events:auto; }
+  .modal{
+    background:var(--panel); border-radius:16px; width:100%; max-width:380px;
+    padding:22px 22px 20px; box-shadow:0 20px 60px rgba(30,22,5,0.35);
+    transform:translateY(8px); transition:transform .18s ease;
+    max-height:88vh; overflow-y:auto;
+  }
+  .overlay.show .modal{ transform:translateY(0); }
+  .modal h2{
+    font-family:'Cormorant Garamond',serif; font-size:23px; margin:0 0 4px; font-weight:700;
+  }
+  .modal .modal-sub{ font-size:12.5px; color:var(--ink-soft); margin-bottom:16px; }
+
+  .ord-grid{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:16px; }
+  .ord-btn{
+    display:flex; align-items:center; gap:8px;
+    border:1.5px solid var(--stone-line); background:#fff;
+    border-radius:10px; padding:9px 10px; font-size:13px; font-family:'Inter',sans-serif;
+    cursor:pointer; text-align:left; color:var(--ink); transition:border-color .12s ease, background .12s ease;
+  }
+  .ord-btn .swatch{ width:12px; height:12px; }
+  .ord-btn.selected{ border-color:var(--gold); background:#fbf3e2; font-weight:600; }
+
+  label{ font-size:12.5px; font-weight:600; color:var(--ink-soft); display:block; margin:12px 0 5px; }
+  input[type=text], textarea{
+    width:100%; border:1.5px solid var(--stone-line); border-radius:9px;
+    padding:9px 10px; font-family:'Inter',sans-serif; font-size:13.5px; color:var(--ink);
+    background:#fff; resize:vertical;
+  }
+  input[type=text]:focus, textarea:focus{ outline:2px solid var(--gold); outline-offset:0; border-color:var(--gold); }
+  textarea{ min-height:70px; }
+
+  .modal-actions{ display:flex; gap:10px; margin-top:18px; }
+  .btn{
+    flex:1; border:none; border-radius:9px; padding:10px 12px; font-size:13.5px;
+    font-weight:600; cursor:pointer; font-family:'Inter',sans-serif;
+  }
+  .btn-primary{ background:var(--gold); color:#fff; }
+  .btn-primary:disabled{ background:#d9cfa9; cursor:not-allowed; }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border:1.5px solid var(--stone-line); }
+
+  .entry-header{ display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+  .entry-tag{
+    font-size:11px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase;
+    padding:4px 9px; border-radius:20px; color:#fff;
+  }
+  .entry-name{ font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; margin:0; }
+  .entry-date{ font-size:11.5px; color:var(--ink-soft); margin:2px 0 0; }
+  .entry-desc{ font-size:13.5px; line-height:1.6; color:var(--ink); white-space:pre-wrap; }
+  .entry-empty-desc{ font-size:13px; color:var(--ink-soft); font-style:italic; }
+
+  .status-msg{ text-align:center; font-size:13px; color:var(--ink-soft); padding:40px 0; }
+
+  .install-btn{
+    display:block; width:100%; margin-top:16px;
+    background:var(--gold); color:#fff; border:none; border-radius:10px;
+    padding:12px; font-size:14px; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif;
+  }
+  .ios-hint{ text-align:center; font-size:12.5px; color:var(--ink-soft); margin-top:12px; }
+
+  .photo-input{ display:none; }
+  .photo-btn{
+    display:flex; align-items:center; justify-content:center; gap:7px;
+    width:100%; border:1.5px dashed var(--stone-line); background:#fff;
+    border-radius:10px; padding:12px 10px; font-size:13px; font-weight:600;
+    color:var(--ink-soft); cursor:pointer; font-family:'Inter',sans-serif;
+    transition:border-color .12s ease, color .12s ease;
+  }
+  .photo-btn:hover{ border-color:var(--gold); color:var(--ink); }
+  .photo-preview-wrap{ position:relative; margin-top:4px; }
+  .photo-preview{ width:100%; max-height:180px; object-fit:cover; border-radius:10px; display:block; }
+  .photo-remove{
+    position:absolute; top:8px; right:8px; background:rgba(30,24,10,0.7); color:#fff;
+    border:none; border-radius:20px; width:26px; height:26px; font-size:14px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .photo-status{ font-size:11.5px; color:var(--ink-soft); margin-top:5px; }
+
+  .entry-photo{ width:100%; border-radius:10px; display:block; margin-bottom:12px; max-height:280px; object-fit:cover; background:var(--stone-line); }
+  .photo-loading{ font-size:12.5px; color:var(--ink-soft); font-style:italic; padding:10px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Temple Ordinance Wall</div>
+    <h1>Fill the Temple</h1>
+    <p class="sub">After you attend the temple, tap an uncolored brick and record what you did. Tap a colored brick to read someone's experience.</p>
+  </header>
+
+  <div class="legend" id="legend"></div>
+
+  <div class="temple-card">
+    <div id="svg-holder" class="status-msg">Loading the wall…</div>
+    <div class="progress-row" id="progress-row" style="display:none;">
+      <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%;"></div></div>
+      <div class="progress-label" id="progress-label"></div>
+    </div>
+  </div>
+
+  <p class="footnote">Everything entered here is visible to everyone who opens this page — this is a shared wall, just like the one on the bulletin board.</p>
+
+  <button id="install-btn" class="install-btn" style="display:none;">📲 Add to Home Screen</button>
+  <p class="ios-hint" id="ios-hint" style="display:none;">On iPhone: tap the Share icon, then "Add to Home Screen."</p>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="modal" id="modal-content"></div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+import {
+  getFirestore, collection, getDocs, doc, getDoc, setDoc, deleteDoc
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCpDXVj-hxX594QEfpo6NkDdqhG36RIU-4",
+  authDomain: "temple-wall.firebaseapp.com",
+  projectId: "temple-wall",
+  storageBucket: "temple-wall.firebasestorage.app",
+  messagingSenderId: "604578272389",
+  appId: "1:604578272389:web:558f11c83c8db69e3f05ec",
+  measurementId: "G-MK5LLXNLZC"
+};
+const fbApp = initializeApp(firebaseConfig);
+const db = getFirestore(fbApp);
+
+const ORDINANCES = [
+  { key:'baptisms',   label:'Baptisms for the Dead', cls:'brick-baptisms',  color:'var(--blue)'   },
+  { key:'initiatory', label:'Initiatory',             cls:'brick-initiatory',color:'var(--yellow)' },
+  { key:'endowment',  label:'Endowment',              cls:'brick-endowment', color:'var(--green)'  },
+  { key:'sealing',    label:'Sealing',                cls:'brick-sealing',   color:'var(--red)'    },
+];
+const ORD_BY_KEY = Object.fromEntries(ORDINANCES.map(o=>[o.key,o]));
+
+const SVGNS = 'http://www.w3.org/2000/svg';
+
+// Temple silhouette polygon (viewBox coordinates)
+const POLY = [
+  [150,520],[300,150],[450,520],
+  [560,40],[670,520],
+  [820,150],[950,520],
+  [950,1260],[150,1260]
+];
+
+function pointInPolygon(x, y, poly){
+  let inside = false;
+  for(let i=0, j=poly.length-1; i<poly.length; j=i++){
+    const xi=poly[i][0], yi=poly[i][1];
+    const xj=poly[j][0], yj=poly[j][1];
+    const intersect = ((yi>y)!==(yj>y)) && (x < (xj-xi)*(y-yi)/(yj-yi)+xi);
+    if(intersect) inside = !inside;
+  }
+  return inside;
+}
+
+// Build brick grid
+const ROW_H = 34, COL_W = 70, BRICK_W = 62, BRICK_H = 26;
+const bricks = []; // {row,col,x,y}
+let rowIndex = 0;
+for(let y = 40; y < 1260; y += ROW_H){
+  const offset = (rowIndex % 2 === 1) ? COL_W/2 : 0;
+  let colIndex = 0;
+  for(let x = 20 + offset; x < 990; x += COL_W){
+    const cx = x + BRICK_W/2, cy = y + BRICK_H/2;
+    if(pointInPolygon(cx, cy, POLY)){
+      bricks.push({ id: rowIndex+'-'+colIndex, x, y });
+    }
+    colIndex++;
+  }
+  rowIndex++;
+}
+
+let dataStore = {}; // { brickId: {ordinance, name, description, ts, hasPhoto} }
+const PHOTO_MAX_DIM = 900;
+const PHOTO_QUALITY = 0.72;
+
+function readFileAsDataURL(file){
+  return new Promise((resolve, reject)=>{
+    const r = new FileReader();
+    r.onload = ()=> resolve(r.result);
+    r.onerror = ()=> reject(new Error('Could not read file'));
+    r.readAsDataURL(file);
+  });
+}
+
+function compressImage(dataUrl){
+  return new Promise((resolve, reject)=>{
+    const img = new Image();
+    img.onload = ()=>{
+      let { width, height } = img;
+      if(width > height && width > PHOTO_MAX_DIM){
+        height = Math.round(height * (PHOTO_MAX_DIM/width));
+        width = PHOTO_MAX_DIM;
+      } else if(height >= width && height > PHOTO_MAX_DIM){
+        width = Math.round(width * (PHOTO_MAX_DIM/height));
+        height = PHOTO_MAX_DIM;
+      }
+      const canvas = document.createElement('canvas');
+      canvas.width = width; canvas.height = height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, width, height);
+      resolve(canvas.toDataURL('image/jpeg', PHOTO_QUALITY));
+    };
+    img.onerror = ()=> reject(new Error('Could not load image'));
+    img.src = dataUrl;
+  });
+}
+
+async function savePhoto(brickId, dataUrl){
+  await setDoc(doc(db, 'photos', brickId), { data: dataUrl });
+}
+
+async function loadPhoto(brickId){
+  const snap = await getDoc(doc(db, 'photos', brickId));
+  return snap.exists() ? snap.data().data : null;
+}
+
+function renderLegend(){
+  const el = document.getElementById('legend');
+  el.innerHTML = ORDINANCES.map(o=>`
+    <div class="legend-item">
+      <span class="swatch" style="background:${o.color}"></span>
+      <span>${o.label}</span>
+    </div>
+  `).join('');
+}
+
+function renderSVG(){
+  const holder = document.getElementById('svg-holder');
+  holder.className = '';
+  holder.innerHTML = '';
+
+  const svg = document.createElementNS(SVGNS, 'svg');
+  svg.setAttribute('viewBox', '0 0 1000 1300');
+  svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+
+  const clipId = 'templeClip';
+  const defs = document.createElementNS(SVGNS,'defs');
+  const clip = document.createElementNS(SVGNS,'clipPath');
+  clip.setAttribute('id', clipId);
+  const clipPoly = document.createElementNS(SVGNS,'polygon');
+  clipPoly.setAttribute('points', POLY.map(p=>p.join(',')).join(' '));
+  clip.appendChild(clipPoly);
+  defs.appendChild(clip);
+  svg.appendChild(defs);
+
+  // subtle outline of the whole temple
+  const outline = document.createElementNS(SVGNS,'polygon');
+  outline.setAttribute('points', POLY.map(p=>p.join(',')).join(' '));
+  outline.setAttribute('fill', 'none');
+  outline.setAttribute('stroke', '#cfc4a2');
+  outline.setAttribute('stroke-width', '3');
+  svg.appendChild(outline);
+
+  const g = document.createElementNS(SVGNS,'g');
+  g.setAttribute('clip-path', `url(#${clipId})`);
+
+  bricks.forEach(b=>{
+    const rect = document.createElementNS(SVGNS,'rect');
+    rect.setAttribute('x', b.x);
+    rect.setAttribute('y', b.y);
+    rect.setAttribute('width', BRICK_W);
+    rect.setAttribute('height', BRICK_H);
+    rect.setAttribute('rx', 2);
+    const entry = dataStore[b.id];
+    rect.setAttribute('class', 'brick ' + (entry ? ORD_BY_KEY[entry.ordinance].cls : 'brick-empty'));
+    rect.addEventListener('click', ()=> onBrickClick(b.id));
+    g.appendChild(rect);
+  });
+
+  svg.appendChild(g);
+  holder.appendChild(svg);
+
+  updateProgress();
+}
+
+function updateProgress(){
+  const total = bricks.length;
+  const filled = Object.keys(dataStore).length;
+  document.getElementById('progress-row').style.display = 'flex';
+  document.getElementById('progress-fill').style.width = (total? (filled/total*100):0) + '%';
+  document.getElementById('progress-label').textContent = `${filled} / ${total} bricks colored`;
+}
+
+async function loadData(){
+  try{
+    const snap = await getDocs(collection(db, 'bricks'));
+    dataStore = {};
+    snap.forEach(docSnap => { dataStore[docSnap.id] = docSnap.data(); });
+  }catch(e){
+    console.error('Load failed', e);
+    dataStore = {};
+  }
+}
+
+async function saveBrickEntry(brickId){
+  // Each brick is its own document, so simultaneous edits to
+  // different bricks by different people never collide.
+  await setDoc(doc(db, 'bricks', brickId), dataStore[brickId]);
+}
+
+function closeModal(){
+  document.getElementById('overlay').classList.remove('show');
+}
+
+function onBrickClick(id){
+  const entry = dataStore[id];
+  if(entry){ showViewModal(id, entry); }
+  else { showAddModal(id); }
+}
+
+function showViewModal(brickId, entry){
+  const ord = ORD_BY_KEY[entry.ordinance];
+  const dateStr = entry.ts ? new Date(entry.ts).toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'}) : '';
+  const content = document.getElementById('modal-content');
+  content.innerHTML = `
+    <div class="entry-header">
+      <span class="entry-tag" style="background:${ord.color}">${ord.label}</span>
+    </div>
+    <p class="entry-name">${entry.name ? escapeHtml(entry.name) : 'Anonymous'}</p>
+    <p class="entry-date">${dateStr}</p>
+    <div id="photo-slot" style="margin-top:14px;"></div>
+    <div style="margin-top:${entry.hasPhoto ? '4px' : '14px'};">
+      ${entry.description
+        ? `<p class="entry-desc">${escapeHtml(entry.description)}</p>`
+        : `<p class="entry-empty-desc">No description was shared for this visit.</p>`}
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="delete-btn" style="color:#a84a3f; border-color:#e3c9c4;">Delete</button>
+      <button class="btn btn-ghost" id="edit-btn">Edit</button>
+      <button class="btn btn-primary" id="close-view-btn">Close</button>
+    </div>
+  `;
+  document.getElementById('close-view-btn').addEventListener('click', closeModal);
+  document.getElementById('edit-btn').addEventListener('click', ()=>{
+    showAddModal(brickId, entry);
+  });
+  document.getElementById('delete-btn').addEventListener('click', async ()=>{
+    const sure = confirm('Delete this brick? This removes the name, description, and photo. This cannot be undone.');
+    if(!sure) return;
+    const btn = document.getElementById('delete-btn');
+    btn.disabled = true;
+    btn.textContent = 'Deleting…';
+    try{
+      await deleteDoc(doc(db, 'bricks', brickId));
+      if(entry.hasPhoto){
+        await deleteDoc(doc(db, 'photos', brickId)).catch(()=>{});
+      }
+      delete dataStore[brickId];
+      closeModal();
+      renderSVG();
+    }catch(e){
+      console.error('Delete failed', e);
+      btn.disabled = false;
+      btn.textContent = 'Delete';
+      alert("Couldn't delete this brick — check your connection and try again.");
+    }
+  });
+  document.getElementById('overlay').classList.add('show');
+
+  if(entry.hasPhoto){
+    const slot = document.getElementById('photo-slot');
+    slot.innerHTML = `<p class="photo-loading">Loading photo…</p>`;
+    loadPhoto(brickId).then(dataUrl=>{
+      if(!document.getElementById('photo-slot')) return; // modal closed already
+      if(dataUrl){
+        slot.innerHTML = `<img class="entry-photo" src="${dataUrl}" alt="Photo from this visit">`;
+      } else {
+        slot.innerHTML = '';
+      }
+    }).catch(()=>{
+      if(document.getElementById('photo-slot')) slot.innerHTML = '';
+    });
+  }
+}
+
+function showAddModal(brickId, existingEntry){
+  const isEdit = !!existingEntry;
+  let selected = isEdit ? existingEntry.ordinance : null;
+  // pendingPhoto states: undefined = no change (keep existing), null = explicitly removed, dataURL = new photo
+  let pendingPhoto = undefined;
+  let photoProcessing = false;
+  const content = document.getElementById('modal-content');
+  content.innerHTML = `
+    <h2>${isEdit ? 'Edit this brick' : 'Color a brick'}</h2>
+    <p class="modal-sub">What did you do at the temple?</p>
+    <div class="ord-grid" id="ord-grid">
+      ${ORDINANCES.map(o=>`
+        <button type="button" class="ord-btn${o.key===selected ? ' selected':''}" data-key="${o.key}">
+          <span class="swatch" style="background:${o.color}"></span>${o.label}
+        </button>
+      `).join('')}
+    </div>
+    <label for="name-input">Your name (optional)</label>
+    <input type="text" id="name-input" placeholder="e.g. Sarah T." maxlength="60" value="${isEdit && existingEntry.name ? escapeHtml(existingEntry.name) : ''}">
+    <label for="desc-input">A bit about your experience (optional)</label>
+    <textarea id="desc-input" placeholder="What stood out to you today?" maxlength="600">${isEdit && existingEntry.description ? escapeHtml(existingEntry.description) : ''}</textarea>
+    <label>Add a photo (optional)</label>
+    <div id="photo-area"></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="cancel-btn">Cancel</button>
+      <button class="btn btn-primary" id="submit-btn"${selected ? '' : ' disabled'}>${isEdit ? 'Save changes' : 'Color this brick'}</button>
+    </div>
+  `;
+
+  const submitBtn = document.getElementById('submit-btn');
+  const photoArea = document.getElementById('photo-area');
+
+  document.querySelectorAll('.ord-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.ord-btn').forEach(b=>b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selected = btn.dataset.key;
+      submitBtn.disabled = false;
+    });
+  });
+
+  function renderPhotoPicker(){
+    photoArea.innerHTML = `
+      <button type="button" class="photo-btn" id="photo-pick-btn">📷 Attach a photo</button>
+      <input type="file" accept="image/*" class="photo-input" id="photo-input">
+    `;
+    document.getElementById('photo-pick-btn').addEventListener('click', ()=>{
+      document.getElementById('photo-input').click();
+    });
+    document.getElementById('photo-input').addEventListener('change', async (e)=>{
+      const file = e.target.files && e.target.files[0];
+      if(!file) return;
+      photoProcessing = true;
+      photoArea.innerHTML = `<p class="photo-status">Processing photo…</p>`;
+      try{
+        const raw = await readFileAsDataURL(file);
+        const compressed = await compressImage(raw);
+        pendingPhoto = compressed;
+        renderPhotoPreview(compressed);
+      }catch(err){
+        pendingPhoto = null;
+        photoArea.innerHTML = `<p class="photo-status">Couldn't process that photo — try a different one, or skip it.</p>`;
+        renderPhotoPicker();
+      } finally {
+        photoProcessing = false;
+      }
+    });
+  }
+
+  function renderPhotoPreview(srcUrl){
+    photoArea.innerHTML = `
+      <div class="photo-preview-wrap">
+        <img class="photo-preview" src="${srcUrl}" alt="Selected photo">
+        <button type="button" class="photo-remove" id="photo-remove-btn">✕</button>
+      </div>
+    `;
+    document.getElementById('photo-remove-btn').addEventListener('click', ()=>{
+      pendingPhoto = null;
+      renderPhotoPicker();
+    });
+  }
+
+  if(isEdit && existingEntry.hasPhoto){
+    photoArea.innerHTML = `<p class="photo-status">Loading current photo…</p>`;
+    loadPhoto(brickId).then(dataUrl=>{
+      if(!document.getElementById('photo-area')) return;
+      if(dataUrl){ renderPhotoPreview(dataUrl); }
+      else { renderPhotoPicker(); }
+    }).catch(()=> renderPhotoPicker());
+  } else {
+    renderPhotoPicker();
+  }
+
+  document.getElementById('cancel-btn').addEventListener('click', closeModal);
+  submitBtn.addEventListener('click', async ()=>{
+    if(!selected) return;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Saving…';
+    const name = document.getElementById('name-input').value.trim();
+    const description = document.getElementById('desc-input').value.trim();
+    const willHavePhoto = pendingPhoto === undefined ? !!(isEdit && existingEntry.hasPhoto) : !!pendingPhoto;
+    dataStore[brickId] = {
+      ordinance: selected,
+      name: name || null,
+      description: description || null,
+      ts: isEdit ? existingEntry.ts : Date.now(),
+      hasPhoto: willHavePhoto
+    };
+    await saveBrickEntry(brickId);
+    try{
+      if(pendingPhoto){
+        await savePhoto(brickId, pendingPhoto);
+      } else if(pendingPhoto === null && isEdit && existingEntry.hasPhoto){
+        await deleteDoc(doc(db, 'photos', brickId));
+      }
+    }catch(e){ console.error('Photo update failed', e); }
+    closeModal();
+    renderSVG();
+  });
+
+  document.getElementById('overlay').classList.add('show');
+}
+
+function escapeHtml(str){
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+document.getElementById('overlay').addEventListener('click', (e)=>{
+  if(e.target.id === 'overlay') closeModal();
+});
+
+(async function init(){
+  renderLegend();
+  await loadData();
+  renderSVG();
+})();
+
+// ---- Installable app support ----
+// (No separate service worker file here — this is a single-file app.
+//  A service worker isn't required for "Add to Home Screen" to work;
+//  it only adds offline caching, which we're trading away for simplicity.)
+
+let deferredInstallPrompt = null;
+window.addEventListener('beforeinstallprompt', (e)=>{
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  const btn = document.getElementById('install-btn');
+  btn.style.display = 'block';
+  btn.addEventListener('click', async ()=>{
+    btn.style.display = 'none';
+    deferredInstallPrompt.prompt();
+    await deferredInstallPrompt.userChoice;
+    deferredInstallPrompt = null;
+  });
+});
+
+// iOS Safari has no install prompt API — show a manual hint instead,
+// unless it's already running as an installed app.
+(function iosHint(){
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const isStandalone = window.navigator.standalone === true ||
+    window.matchMedia('(display-mode: standalone)').matches;
+  if(isIOS && !isStandalone){
+    document.getElementById('ios-hint').style.display = 'block';
+  }
+})();
+</script>
+</body>
+</html>
