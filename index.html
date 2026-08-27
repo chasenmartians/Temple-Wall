@@ -33,6 +33,7 @@
     --yellow: #cf9a2f;
     --green: #587f52;
     --red: #a84a3f;
+    --purple: #7c5ea3;
     --shadow: 0 10px 30px rgba(50,40,10,0.12);
   }
   *{box-sizing:border-box;}
@@ -45,26 +46,31 @@
     color:var(--ink);
     display:flex;
     justify-content:center;
-    padding:28px 14px 60px;
+    padding:28px 14px 90px;
   }
   .wrap{width:100%; max-width:560px;}
-  header{ text-align:center; margin-bottom:18px; }
-  .eyebrow{
-    font-size:11px; letter-spacing:0.18em; text-transform:uppercase;
-    color:var(--gold); font-weight:600; margin-bottom:6px;
+  .banner{
+    text-align:center;
+    background:linear-gradient(135deg, var(--gold), #c8a862);
+    border-radius:14px;
+    padding:22px 20px;
+    margin-bottom:18px;
+    box-shadow:var(--shadow);
   }
-  h1{
+  .banner h1{
     font-family:'Cormorant Garamond', serif;
     font-weight:700;
-    font-size:clamp(30px,7vw,42px);
-    margin:0 0 6px;
-    letter-spacing:0.01em;
+    font-size:clamp(26px,7.5vw,36px);
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:#fff;
+    margin:0;
+    text-shadow:0 1px 3px rgba(40,30,10,0.2);
   }
-  .sub{ color:var(--ink-soft); font-size:14.5px; line-height:1.5; max-width:420px; margin:0 auto; }
 
   .legend{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
     gap:8px 16px;
     background:var(--panel);
     border:1px solid var(--stone-line);
@@ -91,6 +97,7 @@
   .brick-initiatory{ fill:var(--yellow); }
   .brick-endowment{ fill:var(--green); }
   .brick-sealing{ fill:var(--red); }
+  .brick-cool{ fill:var(--purple); }
 
   .progress-row{
     display:flex; align-items:center; gap:10px;
@@ -101,8 +108,6 @@
   }
   .progress-fill{ height:100%; background:var(--gold); border-radius:4px; transition:width .4s ease; }
   .progress-label{ font-size:12px; color:var(--ink-soft); white-space:nowrap; }
-
-  .footnote{ text-align:center; font-size:12px; color:var(--ink-soft); margin-top:16px; line-height:1.6;}
 
   /* Modal */
   .overlay{
@@ -150,6 +155,13 @@
   .btn-primary{ background:var(--gold); color:#fff; }
   .btn-primary:disabled{ background:#d9cfa9; cursor:not-allowed; }
   .btn-ghost{ background:transparent; color:var(--ink-soft); border:1.5px solid var(--stone-line); }
+  .btn-sm{ padding:7px 10px; font-size:12.5px; }
+
+  .delete-link{
+    display:block; margin:16px auto 0; background:none; border:none;
+    color:#a84a3f; font-size:12px; font-family:'Inter',sans-serif;
+    text-decoration:underline; cursor:pointer; padding:4px;
+  }
 
   .entry-header{ display:flex; align-items:center; gap:10px; margin-bottom:14px; }
   .entry-tag{
@@ -163,12 +175,39 @@
 
   .status-msg{ text-align:center; font-size:13px; color:var(--ink-soft); padding:40px 0; }
 
-  .install-btn{
-    display:block; width:100%; margin-top:16px;
-    background:var(--gold); color:#fff; border:none; border-radius:10px;
-    padding:12px; font-size:14px; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif;
+  .tab-bar{
+    position:fixed; left:0; right:0; bottom:0;
+    display:flex; justify-content:center; gap:36px;
+    background:var(--panel); border-top:1px solid var(--stone-line);
+    padding:8px 0 calc(8px + env(safe-area-inset-bottom));
+    box-shadow:0 -4px 16px rgba(50,40,10,0.08);
+    z-index:40;
   }
-  .ios-hint{ text-align:center; font-size:12.5px; color:var(--ink-soft); margin-top:12px; }
+  .tab-btn{
+    display:flex; flex-direction:column; align-items:center; gap:2px;
+    background:none; border:none; font-family:'Inter',sans-serif;
+    color:var(--ink-soft); font-size:11px; font-weight:600;
+    padding:4px 10px; cursor:pointer;
+  }
+  .tab-btn .tab-icon{ font-size:22px; line-height:1; }
+  .tab-btn.active{ color:var(--gold); }
+
+  .memories-group{ margin-bottom:22px; }
+  .memories-group-title{
+    font-family:'Cormorant Garamond',serif; font-weight:700; font-size:17px;
+    color:var(--ink); margin:0 0 10px; padding-left:2px;
+  }
+  .memories-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
+  .memories-thumb{
+    position:relative; aspect-ratio:1/1; border-radius:8px; overflow:hidden;
+    background:var(--stone-line); cursor:pointer;
+  }
+  .memories-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .memories-thumb .thumb-tag{
+    position:absolute; bottom:5px; left:5px; width:9px; height:9px; border-radius:50%;
+    box-shadow:0 0 0 1.5px rgba(255,255,255,0.9);
+  }
+  .memories-empty{ text-align:center; color:var(--ink-soft); font-size:13.5px; padding:50px 10px; }
 
   .photo-input{ display:none; }
   .photo-btn{
@@ -194,27 +233,37 @@
 </head>
 <body>
 <div class="wrap">
-  <header>
-    <div class="eyebrow">Temple Ordinance Wall</div>
-    <h1>Fill the Temple</h1>
-    <p class="sub">After you attend the temple, tap an uncolored brick and record what you did. Tap a colored brick to read someone's experience.</p>
+  <header class="banner">
+    <h1>Temple Wall</h1>
   </header>
 
-  <div class="legend" id="legend"></div>
+  <div id="temple-view">
+    <div class="legend" id="legend"></div>
 
-  <div class="temple-card">
-    <div id="svg-holder" class="status-msg">Loading the wall…</div>
-    <div class="progress-row" id="progress-row" style="display:none;">
-      <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%;"></div></div>
-      <div class="progress-label" id="progress-label"></div>
+    <div class="temple-card">
+      <div id="svg-holder" class="status-msg">Loading the wall…</div>
+      <div class="progress-row" id="progress-row" style="display:none;">
+        <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%;"></div></div>
+        <div class="progress-label" id="progress-label"></div>
+      </div>
     </div>
   </div>
 
-  <p class="footnote">Everything entered here is visible to everyone who opens this page — this is a shared wall, just like the one on the bulletin board.</p>
-
-  <button id="install-btn" class="install-btn" style="display:none;">📲 Add to Home Screen</button>
-  <p class="ios-hint" id="ios-hint" style="display:none;">On iPhone: tap the Share icon, then "Add to Home Screen."</p>
+  <div id="memories-view" style="display:none;">
+    <div id="memories-content" class="status-msg">Loading memories…</div>
+  </div>
 </div>
+
+<nav class="tab-bar" id="tab-bar">
+  <button class="tab-btn active" id="tab-temple" type="button">
+    <span class="tab-icon">🏛️</span>
+    <span class="tab-label">Temple</span>
+  </button>
+  <button class="tab-btn" id="tab-memories" type="button">
+    <span class="tab-icon">🖼️</span>
+    <span class="tab-label">Memories</span>
+  </button>
+</nav>
 
 <div class="overlay" id="overlay">
   <div class="modal" id="modal-content"></div>
@@ -243,6 +292,7 @@ const ORDINANCES = [
   { key:'initiatory', label:'Initiatory',             cls:'brick-initiatory',color:'var(--yellow)' },
   { key:'endowment',  label:'Endowment',              cls:'brick-endowment', color:'var(--green)'  },
   { key:'sealing',    label:'Sealing',                cls:'brick-sealing',   color:'var(--red)'    },
+  { key:'cool',       label:'Cool Experiences',       cls:'brick-cool',      color:'var(--purple)' },
 ];
 const ORD_BY_KEY = Object.fromEntries(ORDINANCES.map(o=>[o.key,o]));
 
@@ -285,6 +335,7 @@ for(let y = 40; y < 1260; y += ROW_H){
 }
 
 let dataStore = {}; // { brickId: {ordinance, name, description, ts, hasPhoto} }
+const photoCache = {}; // { brickId: dataUrl | null } — shared cache for Memories grid + view modal
 const PHOTO_MAX_DIM = 900;
 const PHOTO_QUALITY = 0.72;
 
@@ -440,51 +491,36 @@ function showViewModal(brickId, entry){
         : `<p class="entry-empty-desc">No description was shared for this visit.</p>`}
     </div>
     <div class="modal-actions">
-      <button class="btn btn-ghost" id="delete-btn" style="color:#a84a3f; border-color:#e3c9c4;">Delete</button>
-      <button class="btn btn-ghost" id="edit-btn">Edit</button>
-      <button class="btn btn-primary" id="close-view-btn">Close</button>
+      <button class="btn btn-ghost btn-sm" id="edit-btn">Edit</button>
+      <button class="btn btn-primary btn-sm" id="close-view-btn">Close</button>
     </div>
   `;
   document.getElementById('close-view-btn').addEventListener('click', closeModal);
   document.getElementById('edit-btn').addEventListener('click', ()=>{
     showAddModal(brickId, entry);
   });
-  document.getElementById('delete-btn').addEventListener('click', async ()=>{
-    const sure = confirm('Delete this brick? This removes the name, description, and photo. This cannot be undone.');
-    if(!sure) return;
-    const btn = document.getElementById('delete-btn');
-    btn.disabled = true;
-    btn.textContent = 'Deleting…';
-    try{
-      await deleteDoc(doc(db, 'bricks', brickId));
-      if(entry.hasPhoto){
-        await deleteDoc(doc(db, 'photos', brickId)).catch(()=>{});
-      }
-      delete dataStore[brickId];
-      closeModal();
-      renderSVG();
-    }catch(e){
-      console.error('Delete failed', e);
-      btn.disabled = false;
-      btn.textContent = 'Delete';
-      alert("Couldn't delete this brick — check your connection and try again.");
-    }
-  });
   document.getElementById('overlay').classList.add('show');
 
   if(entry.hasPhoto){
     const slot = document.getElementById('photo-slot');
-    slot.innerHTML = `<p class="photo-loading">Loading photo…</p>`;
-    loadPhoto(brickId).then(dataUrl=>{
-      if(!document.getElementById('photo-slot')) return; // modal closed already
-      if(dataUrl){
-        slot.innerHTML = `<img class="entry-photo" src="${dataUrl}" alt="Photo from this visit">`;
-      } else {
-        slot.innerHTML = '';
+    if(brickId in photoCache){
+      if(photoCache[brickId]){
+        slot.innerHTML = `<img class="entry-photo" src="${photoCache[brickId]}" alt="Photo from this visit">`;
       }
-    }).catch(()=>{
-      if(document.getElementById('photo-slot')) slot.innerHTML = '';
-    });
+    } else {
+      slot.innerHTML = `<p class="photo-loading">Loading photo…</p>`;
+      loadPhoto(brickId).then(dataUrl=>{
+        photoCache[brickId] = dataUrl;
+        if(!document.getElementById('photo-slot')) return; // modal closed already
+        if(dataUrl){
+          slot.innerHTML = `<img class="entry-photo" src="${dataUrl}" alt="Photo from this visit">`;
+        } else {
+          slot.innerHTML = '';
+        }
+      }).catch(()=>{
+        if(document.getElementById('photo-slot')) slot.innerHTML = '';
+      });
+    }
   }
 }
 
@@ -515,6 +551,7 @@ function showAddModal(brickId, existingEntry){
       <button class="btn btn-ghost" id="cancel-btn">Cancel</button>
       <button class="btn btn-primary" id="submit-btn"${selected ? '' : ' disabled'}>${isEdit ? 'Save changes' : 'Color this brick'}</button>
     </div>
+    ${isEdit ? `<button type="button" class="delete-link" id="delete-link-btn">Delete this brick</button>` : ''}
   `;
 
   const submitBtn = document.getElementById('submit-btn');
@@ -571,17 +608,48 @@ function showAddModal(brickId, existingEntry){
   }
 
   if(isEdit && existingEntry.hasPhoto){
-    photoArea.innerHTML = `<p class="photo-status">Loading current photo…</p>`;
-    loadPhoto(brickId).then(dataUrl=>{
-      if(!document.getElementById('photo-area')) return;
-      if(dataUrl){ renderPhotoPreview(dataUrl); }
-      else { renderPhotoPicker(); }
-    }).catch(()=> renderPhotoPicker());
+    if(brickId in photoCache && photoCache[brickId]){
+      renderPhotoPreview(photoCache[brickId]);
+    } else {
+      photoArea.innerHTML = `<p class="photo-status">Loading current photo…</p>`;
+      loadPhoto(brickId).then(dataUrl=>{
+        photoCache[brickId] = dataUrl;
+        if(!document.getElementById('photo-area')) return;
+        if(dataUrl){ renderPhotoPreview(dataUrl); }
+        else { renderPhotoPicker(); }
+      }).catch(()=> renderPhotoPicker());
+    }
   } else {
     renderPhotoPicker();
   }
 
   document.getElementById('cancel-btn').addEventListener('click', closeModal);
+
+  if(isEdit){
+    document.getElementById('delete-link-btn').addEventListener('click', async ()=>{
+      const sure = confirm('Delete this brick? This removes the name, description, and photo. This cannot be undone.');
+      if(!sure) return;
+      const delBtn = document.getElementById('delete-link-btn');
+      delBtn.disabled = true;
+      delBtn.textContent = 'Deleting…';
+      try{
+        await deleteDoc(doc(db, 'bricks', brickId));
+        if(existingEntry.hasPhoto){
+          await deleteDoc(doc(db, 'photos', brickId)).catch(()=>{});
+        }
+        delete dataStore[brickId];
+        delete photoCache[brickId];
+        closeModal();
+        renderSVG();
+      }catch(e){
+        console.error('Delete failed', e);
+        delBtn.disabled = false;
+        delBtn.textContent = 'Delete this brick';
+        alert("Couldn't delete this brick — check your connection and try again.");
+      }
+    });
+  }
+
   submitBtn.addEventListener('click', async ()=>{
     if(!selected) return;
     submitBtn.disabled = true;
@@ -604,6 +672,8 @@ function showAddModal(brickId, existingEntry){
         await deleteDoc(doc(db, 'photos', brickId));
       }
     }catch(e){ console.error('Photo update failed', e); }
+    if(pendingPhoto){ photoCache[brickId] = pendingPhoto; }
+    else if(pendingPhoto === null){ delete photoCache[brickId]; }
     closeModal();
     renderSVG();
   });
@@ -627,35 +697,83 @@ document.getElementById('overlay').addEventListener('click', (e)=>{
   renderSVG();
 })();
 
-// ---- Installable app support ----
-// (No separate service worker file here — this is a single-file app.
-//  A service worker isn't required for "Add to Home Screen" to work;
-//  it only adds offline caching, which we're trading away for simplicity.)
+// ---- Tab navigation: Temple wall <-> Memories gallery ----
+function switchTab(tab){
+  document.getElementById('tab-temple').classList.toggle('active', tab === 'temple');
+  document.getElementById('tab-memories').classList.toggle('active', tab === 'memories');
+  document.getElementById('temple-view').style.display = tab === 'temple' ? '' : 'none';
+  document.getElementById('memories-view').style.display = tab === 'memories' ? '' : 'none';
+  if(tab === 'memories'){ renderMemories(); }
+}
+document.getElementById('tab-temple').addEventListener('click', ()=> switchTab('temple'));
+document.getElementById('tab-memories').addEventListener('click', ()=> switchTab('memories'));
 
-let deferredInstallPrompt = null;
-window.addEventListener('beforeinstallprompt', (e)=>{
-  e.preventDefault();
-  deferredInstallPrompt = e;
-  const btn = document.getElementById('install-btn');
-  btn.style.display = 'block';
-  btn.addEventListener('click', async ()=>{
-    btn.style.display = 'none';
-    deferredInstallPrompt.prompt();
-    await deferredInstallPrompt.userChoice;
-    deferredInstallPrompt = null;
-  });
-});
+async function renderMemories(){
+  const container = document.getElementById('memories-content');
+  const entries = Object.entries(dataStore).filter(([id, e]) => e.hasPhoto);
 
-// iOS Safari has no install prompt API — show a manual hint instead,
-// unless it's already running as an installed app.
-(function iosHint(){
-  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
-  const isStandalone = window.navigator.standalone === true ||
-    window.matchMedia('(display-mode: standalone)').matches;
-  if(isIOS && !isStandalone){
-    document.getElementById('ios-hint').style.display = 'block';
+  if(entries.length === 0){
+    container.innerHTML = `<p class="memories-empty">No photos have been shared yet. They'll show up here once someone attaches one to their brick.</p>`;
+    return;
   }
-})();
+
+  entries.sort((a, b) => (b[1].ts || 0) - (a[1].ts || 0));
+
+  // Group by month + year for easy browsing
+  const groups = [];
+  let currentLabel = null, currentGroup = null;
+  entries.forEach(([id, entry])=>{
+    const label = entry.ts
+      ? new Date(entry.ts).toLocaleDateString(undefined, {year:'numeric', month:'long'})
+      : 'Undated';
+    if(label !== currentLabel){
+      currentLabel = label;
+      currentGroup = { label, items: [] };
+      groups.push(currentGroup);
+    }
+    currentGroup.items.push([id, entry]);
+  });
+
+  container.innerHTML = groups.map(g => `
+    <div class="memories-group">
+      <p class="memories-group-title">${escapeHtml(g.label)}</p>
+      <div class="memories-grid">
+        ${g.items.map(([id, entry])=>{
+          const ord = ORD_BY_KEY[entry.ordinance];
+          const cached = photoCache[id];
+          return `<div class="memories-thumb" data-id="${id}">
+            ${cached ? `<img src="${cached}" alt="Temple visit photo">` : ''}
+            <span class="thumb-tag" style="background:${ord.color}"></span>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>
+  `).join('');
+
+  container.querySelectorAll('.memories-thumb').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      const id = el.dataset.id;
+      showViewModal(id, dataStore[id]);
+    });
+  });
+
+  // Fetch photos we don't already have cached, then fill them in
+  const idsToFetch = entries.map(([id])=>id).filter(id => !(id in photoCache));
+  await Promise.all(idsToFetch.map(async id=>{
+    try{ photoCache[id] = await loadPhoto(id); }
+    catch(e){ photoCache[id] = null; }
+  }));
+
+  entries.forEach(([id])=>{
+    const thumbEl = container.querySelector(`.memories-thumb[data-id="${id}"]`);
+    if(thumbEl && photoCache[id] && !thumbEl.querySelector('img')){
+      const img = document.createElement('img');
+      img.src = photoCache[id];
+      img.alt = 'Temple visit photo';
+      thumbEl.prepend(img);
+    }
+  });
+}
 </script>
 </body>
 </html>
